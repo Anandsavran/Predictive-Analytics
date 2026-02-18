@@ -13,7 +13,7 @@ to take by optimizing decisions using predictions and business constraints.
 Q3. Give three real‑world examples of predictive analytics.
 Examples: credit‑risk scoring in banking; demand forecasting in retail; predicting equipment 
 failure (predictive maintenance) in manufacturing; churn prediction in telecom; click‑through 
-rate prediction in online advertising.
+rate prediction in online advertising
 Q4. What are the main steps in a predictive analytics project?
 Typical steps: problem definition → data collection → data preprocessing/feature engineering 
 → model selection and training → model evaluation and validation → deployment and 
