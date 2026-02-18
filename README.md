@@ -78,7 +78,7 @@ Q20. What is the difference between training, validation, and test sets?
 Training data is used to fit the model; validation data is used for tuning hyperparameters and 
 model selection; the test set is held out until the end to estimate true generalization 
 performance.
-F. Handling Missing Data
+F. Handling Missing Data.
 Q21. Why do missing values cause problems?
 Many algorithms cannot handle missing values directly, and patterns in missingness can bias 
 results if not treated carefully.
