@@ -100,7 +100,7 @@ scaling) maps data to a fixed range, typically.
 Q26. How would you handle highly skewed features?
 Apply transformations such as logarithm, square root, or Box‑Cox/Yeo‑Johnson to reduce 
 skewness, or use robust models less sensitive to distribution shape.
-H. Encoding Categorical Variables
+H. Encoding Categorical Variables.
 Q27. Why can’t most ML algorithms use raw categorical text?
 Algorithms expect numeric inputs; categorical texts must be converted into numerical 
 representations without leaking order where none exists.
