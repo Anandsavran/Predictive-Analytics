@@ -69,110 +69,140 @@ D. Unsupervised Learning
 Q14. Define unsupervised learning.
 Unsupervised learning learns patterns from data without target labels, focusing on 
 discovering structure such as clusters, latent factors, or low‑dimensional manifolds.
+
 Q15. Name common unsupervised learning techniques.
 Clustering (k‑means, hierarchical, DBSCAN), dimensionality reduction (PCA, t‑SNE, UMAP), 
 association rule mining (Apriori, FP‑growth), and anomaly detection methods.
+
 Q16. What is clustering and give a use‑case.
 Clustering groups similar observations together; for example, segmenting customers into 
 behavior‑based groups for targeted marketing when labels such as “high value” are not 
 predefined.
+
 Q17. What is dimensionality reduction and why is it helpful?
 Dimensionality reduction transforms high‑dimensional data into fewer features while 
 preserving structure; it helps with visualization, noise reduction, and mitigating the curse of 
 dimensionality.
+
 E. Data Preprocessing Basics
 Q18. What is data preprocessing and why is it crucial?
 Data preprocessing consists of cleaning and transforming raw data into a suitable form for 
 modeling (handling missing values, scaling, encoding, etc.). Good preprocessing often has 
 more impact on model performance than trying many algorithms.
+
 Q19. What are typical data quality problems you may face?
 Common issues: missing values, duplicates, inconsistent formats, outliers, wrong data types, 
 categorical values with spelling variations, and data leakage (using future information).
+
 Q20. What is the difference between training, validation, and test sets?
 Training data is used to fit the model; validation data is used for tuning hyperparameters and 
 model selection; the test set is held out until the end to estimate true generalization 
 performance.
+
 F. Handling Missing Data.
 Q21. Why do missing values cause problems?
 Many algorithms cannot handle missing values directly, and patterns in missingness can bias 
 results if not treated carefully.
+
 Q22. What are common strategies for handling missing data?
 Options include deletion (dropping rows/columns with too many missing values), simple 
 imputation (mean/median/mode), model‑based imputation (k‑NN, regression, MICE), or using 
 indicator variables to mark missingness.
+
 Q23. When is it dangerous to drop all rows with missing values?
 If missingness is systematic (not random), dropping rows can bias the sample—for instance, 
 removing all patients who skipped follow‑ups may hide high‑risk cases.
+
 G. Feature Scaling and Transformation
 Q24. Why is feature scaling important?
 Many algorithms (k‑NN, SVM, gradient descent‑based models, clustering) are sensitive to 
 feature magnitude; scaling ensures that features contribute comparably to distance or 
 gradient calculations.
+
 Q25. What are standardization and normalization?
 Standardization transforms features to zero mean and unit variance. Normalization (min‑max 
 scaling) maps data to a fixed range, typically. 
+
 Q26. How would you handle highly skewed features?
 Apply transformations such as logarithm, square root, or Box‑Cox/Yeo‑Johnson to reduce 
 skewness, or use robust models less sensitive to distribution shape.
+
 H. Encoding Categorical Variables.
 Q27. Why can’t most ML algorithms use raw categorical text?
 Algorithms expect numeric inputs; categorical texts must be converted into numerical 
 representations without leaking order where none exists.
+
 Q28. Explain one‑hot encoding and when it is appropriate.
 One‑hot encoding creates a binary column for each category; it is suitable for low‑cardinality 
 nominal variables where the number of categories is manageable.
+
 Q29. What is target/mean encoding and what is the risk?
 Target encoding replaces categories with summary statistics of the target (e.g., average label). 
 It can reduce dimensionality but risks target leakage and overfitting if not regularized with 
 cross‑validation or noise.
+
 I. Outliers and Noise
 Q30. What is an outlier and why does it matter?
 An outlier is an observation far from the bulk of the data. Outliers can distort parameter 
 estimates (e.g., in linear regression) and mislead models.
+
 Q31. How can you detect outliers?
 Approaches include visualizations (boxplots, scatter plots), z‑scores, IQR rules, 
 clustering‑based anomaly scores, isolation forests, or domain‑specific rules.
+
 Q32. How might you treat outliers?
 Options: verify and correct data entry errors, cap or winsorize extreme values, transform 
 variables, use robust models, or explicitly label them as anomalies.
+
 J. Feature Engineering
 Q33. What is feature engineering?
 Feature engineering creates new input variables from raw data (aggregations, ratios, 
 domain‑specific transformations) to help the model capture relevant patterns.
+
 Q34. Give examples of feature engineering for a sales forecasting problem.
 Examples: lag features (sales in previous weeks), rolling averages, day‑of‑week and holiday 
 indicators, price difference vs competitor, promotion flags.
+
 Q35. What is feature selection and why is it useful?
 Feature selection chooses a subset of informative variables to reduce overfitting, improve 
 interpretability, and speed up training; methods include filter (correlation), wrapper 
 (recursive feature elimination), and embedded (L1 regularization).
+
 K. Evaluation Basics (Predictive Context)
 Q36. What metrics are used for regression models?
 Common metrics: MAE, MSE, RMSE, R2R2, and MAPE; choice depends on whether you care 
 more about absolute error, squared error, or relative error.
+
 Q37. What metrics are used for classification models?
 Accuracy, precision, recall, F1‑score, ROC‑AUC, PR‑AUC, and confusion matrix‑based rates; 
 choice depends on class imbalance and the cost of false positives vs false negatives.
+
 Q38. Why is accuracy often misleading in imbalanced datasets?
 If 99% of examples are negative, a model that always predicts negative has 99% accuracy but 
 is useless for detecting the rare positive class.
+
 L. Conceptual / HR‑style Questions
 Q39. Explain predictive analytics to a non‑technical manager.
 You could say: “We analyze historical data to learn patterns, then build models that estimate 
 what is likely to happen next so the business can act earlier—for example, predicting which 
 customers are likely to leave and targeting them with offers.”
+
 Q40. How do you decide whether to use a simple model or a complex one?
 Start with simple, interpretable models; only move to more complex models if they 
 significantly improve validation performance and the gain justifies extra complexity, latency, 
 and maintenance.
+
 Q41. How do you ensure that a predictive model will generalize to future data?
 Use proper train/validation/test splits, cross‑validation, time‑based splits for temporal data, 
 avoid leakage, monitor performance after deployment, and retrain when data drifts.
+
+
 Unit II
 Concept and Types of Regression
 Q1. What is regression in supervised learning?
 Regression estimates a relationship between input variables (features) and a continuous 
 output variable, allowing prediction of numeric values like price, demand, or temperature.
+
 Q2. Distinguish between simple and multiple linear regression.
 Simple linear regression uses one predictor and fits a line y=β0+β1xy=β0+β1x. Multiple linear 
 regression uses several predictors: y=β0+β1x1+
@@ -180,57 +210,72 @@ regression uses several predictors: y=β0+β1x1+
 +βpxpy=β0+β1x1+
 ⋯
 +βpxp.
+
 Q3. What is polynomial regression and why is it used?
 Polynomial regression models non‑linear relationships by including powers of a feature, e.g. 
 y=β0+β1x+β2x2y=β0+β1x+β2x2. It’s still linear in parameters but non‑linear in xx.
+
 Q4. How is logistic regression different from linear regression?
 Linear regression predicts continuous values and minimizes squared error. Logistic regression 
 predicts probability of a binary class by modeling log‑odds and applying the sigmoid 
 function, usually optimized via cross‑entropy loss.
+
 Q5. Can logistic regression be used for multi‑class problems? How?
 Yes, using one‑vs‑rest (train a separate binary model for each class) or multinomial (softmax) 
 logistic regression.
 Ordinary Least Squares (OLS) and Assumptions
+
 Q6. What is Ordinary Least Squares estimation?
 OLS estimates regression coefficients by minimizing the sum of squared residuals 
 ∑(yi−y^i)2∑(yi−y^i)2; the solution has a closed form β^=(X⊤X)−1X⊤yβ^=(X⊤X)−1X⊤y when certain 
 conditions hold.
+
 Q7. What are the key assumptions of classical linear regression?
 Linearity in parameters, independence of errors, homoscedasticity (constant variance), no 
 perfect multicollinearity, and errors that are approximately normally distributed for valid 
 inference.
+
 Q8. What happens if these assumptions are violated?
 Predictions can remain reasonable, but coefficient estimates may become biased or 
 inefficient, standard errors and p‑values become unreliable, and prediction intervals may be 
 wrong.
+
 Q9. What is multicollinearity and why is it a problem?
 Multicollinearity occurs when predictors are highly correlated; it makes coefficient estimates 
 unstable and inflates their variances, so small data changes can flip signs and magnitudes.
+
 Q10. How can you detect and handle multicollinearity?
 Detect via correlation matrix or Variance Inflation Factor (VIF). Handle by removing or 
 combining correlated variables, using dimensionality reduction (PCA), or applying regularized 
 regression (ridge, lasso).
 Correlation
+
 Q11. What does correlation measure in this context?
 Correlation (usually Pearson) measures linear association between two variables, ranging 
 from −1 (perfect negative) to +1 (perfect positive); 0 means no linear correlation.
+
 Q12. Why is “correlation does not imply causation” important in regression?
 Variables can be correlated due to confounders or coincidental patterns; building a 
 regression model only on correlation does not prove one variable causes another.
+
 Q13. How would you use a correlation matrix before modeling?
 To identify strong relationships between features and the target, and to detect highly 
 correlated features that might lead to multicollinearity.
 Model Interpretation
+
 Q14. How do you interpret the slope coefficient in simple linear regression?
 β1β1 represents the expected change in yy for a one‑unit increase in xx, holding other factors 
 constant (in multiple regression, “holding others constant” applies).
+
 Q15. What is the intercept and is it always meaningful?
 The intercept β0β0 is the predicted value of yy when all predictors are zero; sometimes this 
 scenario is outside the data range and lacks practical meaning.
+
 Q16. In logistic regression, how do you interpret a coefficient?
 A coefficient indicates the change in log‑odds of the positive class for a one‑unit increase in 
 the predictor; exponentiating it gives the odds ratio.
 Evaluation Metrics: MAE, MSE, RMSE, R²
+
 Q17. Define Mean Absolute Error (MAE).
 MAE is the average absolute difference between actual and predicted values: 
 MAE=1n∑∣
@@ -238,67 +283,85 @@ yi−y^i∣
 MAE=n1∑∣
 yi−y^i∣
 ; it measures typical error magnitude in original units.
+
 Q18. Define Mean Squared Error (MSE).
 MSE is the average squared difference: MSE=1n∑(yi−y^i)2MSE=n1∑(yi−y^i)2; it penalizes large 
 errors more strongly than MAE.
+
 Q19. Define Root Mean Squared Error (RMSE).
 RMSE is the square root of MSE; it has the same units as the target and emphasizes large 
 errors due to the squaring.
+
 Q20. What is R2R2 (coefficient of determination)?
 R2=1−SSresSStotR2=1−SStotSSres shows the proportion of variance in the target explained 
 by the model, ranging from 0 to 1 (and occasionally negative on test data if the model is 
 worse than predicting the mean).
+
 Q21. When might you prefer MAE over RMSE?
 When you want a robust measure less sensitive to outliers and want a “typical” absolute error 
 that is easy to interpret.
+
 Q22. Why can two models with similar R2R2 have very different usefulness?
 Because R2R2 ignores the distribution of errors and business cost; one model might be 
 biased in critical ranges while overall variance explained looks similar.
 Practical and Scenario‑Based Questions
+
 Q23. How do you choose between linear and polynomial regression for a dataset?
 Plot the data and residuals: if patterns are clearly curved, try polynomial terms and compare 
 via cross‑validated error; avoid very high degree polynomials to prevent overfitting.
+
 Q24. You fitted a regression model with very high training R2R2 but poor test performance. 
 What is happening and what do you do?
 Likely overfitting; simplify the model (fewer features, lower polynomial degree), use 
 regularization, or collect more data and rely on cross‑validation for model selection.
+
 Q25. How would you evaluate a regression model properly?
 Split into train/validation/test (or use k‑fold CV), scale/transform features as needed, train on 
 train, tune hyperparameters on validation using metrics like RMSE/MAE, and report 
 performance on the unseen test set.
+
 Q26. In a business context, how do you decide which error metric to optimize?
 Map prediction errors to business cost: if large errors are very costly, use MSE/RMSE; if all 
 errors are equally costly per unit, MAE may be better; sometimes custom loss functions 
 reflect asymmetric penalties.
+
 Q27. Why is logistic regression considered a classification algorithm even though it has 
 “regression” in the name?
 Because it outputs probabilities of class membership and is used to classify instances, not to 
 predict continuous numeric values; “regression” refers to modeling log‑odds as a linear 
 function of features.
+
 Q28. What is regularization and how does it relate to regression?
 Regularization (e.g., L1 in lasso, L2 in ridge) adds a penalty on large coefficients to the loss 
 function; it shrinks weights, reduces variance, and helps combat multicollinearity and 
 overfitting.
+
 Q29. How do you check if your residuals satisfy linear regression assumptions?
 Plot residuals vs fitted values (look for randomness), check histogram/QQ‑plot of residuals 
 (approximate normality), and inspect residuals against each predictor for patterns or 
 heteroscedasticity.
+
 Q30. In logistic regression, which evaluation metrics replace MAE/MSE?
 Common metrics are accuracy, precision, recall, F1, ROC‑AUC, log‑loss, and confusion matrix; 
 choice depends on class imbalance and error costs.
+
+
 Unit III
 Concepts and Algorithms
 Q1. What is classification in supervised learning?
 Classification learns a mapping from features to discrete class labels using labeled examples, 
 then assigns each new sample to one of the predefined classes.
+
 Q2. What is “lazy learning” and how does k‑nearest neighbors (k‑NN) fit in?
 Lazy learning postpones generalization until query time; k‑NN stores the training set and, for 
 each new point, finds the k closest training points (by a distance metric) and predicts the 
 majority class among them.
+
 Q3. What are the advantages and disadvantages of k‑NN?
 Advantages: simple, non‑parametric, works well with enough data and a good distance metric. 
 Disadvantages: expensive at prediction time, sensitive to feature scaling and irrelevant 
 features, performance degrades in high dimensions.
+
 Q4. What is Naïve Bayes and why is it called “naïve”?
 Naïve Bayes is a probabilistic classifier based on Bayes’ theorem, assuming features are 
 conditionally independent given the class. The “naïve” assumption simplifies computation 
