@@ -1,56 +1,70 @@
 # Predictive-AnalyticsPREDICTIVE ANALYTICS
 Predictive Analytics all types of questions
-Unit I
+Unit 
+
 A. Predictive Analytics Basics
 Q1. What is predictive analytics?
 Predictive analytics is the branch of data analytics that builds models from historical data to 
-estimate the probability or value of future outcomes (e.g., next month’s sales, default risk, 
+estimate the probability or value of future outcomes (e.g., next month’s sales, default risk,
 churn). It typically combines statistics, machine learning, and domain knowledge.
+
 Q2. How is predictive analytics different from descriptive and prescriptive analytics?
 Descriptive analytics summarizes what has happened (reports, dashboards). Predictive 
 analytics estimates what is likely to happen next. Prescriptive analytics suggests what actions  
 to take by optimizing decisions using predictions and business constraints.
+
 Q3. Give three real‑world examples of predictive analytics.
 Examples: credit‑risk scoring in banking; demand forecasting in retail; predicting equipment 
 failure (predictive maintenance) in manufacturing; churn prediction in telecom; click‑through 
 rate prediction in online advertising
+
 Q4. What are the main steps in a predictive analytics project?
 Typical steps: problem definition → data collection → data preprocessing/feature engineering 
 → model selection and training → model evaluation and validation → deployment and 
 monitoring.
+
 B. Machine Learning and Its Types
 Q5. What is machine learning?
 Machine learning is a set of methods that allow computers to learn patterns from data and 
 make predictions or decisions without being explicitly programmed with rules.
+
 Q6. What are the main categories of machine learning?
 The main categories are supervised learning (labeled outputs), unsupervised learning (no 
 labels), semi‑supervised learning (few labels + many unlabeled samples), and reinforcement 
 learning (learning via rewards from interaction with an environment).
+
 Q7. When would you choose supervised vs unsupervised learning?
 Use supervised learning when you have labeled data and a clear target variable (price, class, 
 probability). Use unsupervised learning when labels are not available and the goal is to 
 discover structure, clusters, or lower‑dimensional representations in the data.
+
 Q8. What is reinforcement learning in one sentence?
 Reinforcement learning trains an agent to take actions in an environment to maximize 
 cumulative reward, using feedback (rewards/penalties) instead of labeled examples.
+
 C. Supervised Learning
 Q9. Define supervised learning.
 Supervised learning is a type of ML where models are trained on input–output pairs (x,y)(x,y); 
 the algorithm learns a mapping from features to target so it can predict yy for new xx.
+
 Q10. What is the difference between regression and classification?
 Regression predicts continuous numeric outputs (e.g., house price). Classification predicts 
 discrete categories or labels (e.g., spam vs non‑spam, disease vs no disease).
+
 Q11. List common supervised learning algorithms.
 Examples: linear regression, logistic regression, decision trees, random forests, gradient 
 boosting (XGBoost, LightGBM), support vector machines, k‑nearest neighbors, and neural 
 networks.
+
 Q12. What is overfitting and how can you reduce it in supervised learning?
 Overfitting occurs when a model learns noise and performs well on training data but poorly 
 on unseen data. It can be reduced by using more data, simplifying the model, regularization 
 (L1/L2), pruning trees, early stopping, or cross‑validation to tune hyperparameters.
+
 Q13. What is cross‑validation and why is it used?
 Cross‑validation (e.g., k‑fold) repeatedly splits data into training and validation folds to 
 estimate how well a model generalizes and to choose hyperparameters more robustly.
+
 D. Unsupervised Learning
 Q14. Define unsupervised learning.
 Unsupervised learning learns patterns from data without target labels, focusing on 
