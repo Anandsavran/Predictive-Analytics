@@ -522,26 +522,33 @@ Lift: confidence(A→B) / support(B); lift > 1 indicates positive association.
 Q21. What is market basket analysis?
 It applies association rules to retail transaction data to discover which products are 
 frequently bought together, informing store layout, promotions, and cross‑selling.
+
 Q22. Name common algorithms for mining association rules.
 Apriori and FP‑growth are classic algorithms that find frequent itemsets and then derive rules 
 meeting minimum support and confidence thresholds.
+
 Q23. Why is the Apriori algorithm efficient despite considering many combinations?
 It uses the Apriori property: any superset of an infrequent itemset is also infrequent, so large 
 parts of the search space can be pruned early.
 Finding Patterns and Practical Considerations
+
 Q24. How does clustering help in pattern detection?
 Clustering reveals groups with similar characteristics (e.g., customer segments), which can be 
 interpreted for targeted strategies or as features for other models.
+
 Q25. How can you evaluate the usefulness of clusters for business?
 Check whether clusters differ meaningfully in key metrics (revenue, churn, risk), whether 
 stakeholders can describe them intuitively, and whether actions can be tailored to each 
 group.
+
 Q26. What are common pitfalls in association rule mining?
 Generating too many trivial rules, misinterpreting correlation as causation, setting thresholds 
 too low or high, and ignoring business context.
+
 Q27. How would you reduce the number of association rules to a manageable set?
 Raise support/confidence thresholds, filter by lift or conviction, limit rule length, and focus 
 on rules involving high‑value items or categories of interest.
+
 Unit V
 Dimensionality Reduction & PCA
 Q1. What is dimensionality reduction and why is it useful?
@@ -549,35 +556,43 @@ Dimensionality reduction transforms data with many features into a lower‑dimen
 representation that preserves as much important information (variance or structure) as 
 possible. It helps combat the curse of dimensionality, reduces noise, speeds up training, and 
 improves visualization.
+
 Q2. Distinguish feature selection from feature extraction.
 Feature selection chooses a subset of original features (e.g., via correlation or mutual 
 information), leaving them unchanged. Feature extraction creates new features as 
 combinations of originals (e.g., PCA components, autoencoder bottleneck features).
+
 Q3. What is Principal Component Analysis (PCA) conceptually?
 PCA finds orthogonal directions (principal components) in feature space along which the data 
 variance is maximized; projecting data onto the top kk components gives a lower‑dimensional 
 representation that captures most of the variability.
+
 Q4. What mathematical objects does PCA use?
 PCA computes the covariance matrix of standardized features and then its 
 eigenvalues/eigenvectors, or equivalently performs singular value decomposition (SVD) of 
 the data matrix; eigenvectors define components, eigenvalues give their explained variances.
+
 Q5. How do you choose the number of PCA components?
 Use the cumulative explained variance plot and choose the smallest kk such that, for 
 example, 90–95% of variance is retained, or apply cross‑validation on downstream model 
 performance.
+
 Q6. What assumptions and limitations does PCA have?
 PCA assumes linear relationships, focuses on directions of maximal variance (which may not 
 correspond to the most predictive features), and can be distorted by unscaled or heavily 
 skewed features and outliers.
 Feedforward Neural Networks and MLP
+
 Q7. What is a feedforward neural network?
 It is a directed acyclic network of layers where information flows from inputs through one or 
 more hidden layers to outputs; each layer applies a linear transformation followed by a 
 nonlinear activation (e.g., ReLU, sigmoid).
+
 Q8. Describe a multi‑layer perceptron (MLP).
 An MLP is a standard fully connected feedforward network with an input layer, one or more 
 hidden layers of neurons, and an output layer; every neuron in a layer connects to all neurons 
 in the next layer, making it a universal function approximator for many tasks.
+
 Q9. Why are nonlinear activation functions necessary?
 Without nonlinear activations, stacking multiple linear layers collapses into a single linear 
 transformation, so the network cannot model complex nonlinear relationships; nonlinearities 
