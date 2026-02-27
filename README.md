@@ -366,98 +366,124 @@ Q4. What is Naïve Bayes and why is it called “naïve”?
 Naïve Bayes is a probabilistic classifier based on Bayes’ theorem, assuming features are 
 conditionally independent given the class. The “naïve” assumption simplifies computation 
 but is rarely exactly true.
+
 Q5. Give an example where Naïve Bayes is effective.
 Text classification (spam detection, sentiment) often works well with multinomial Naïve Bayes 
 because word occurrences given topic are reasonably independent and high‑dimensional.
+
 Q6. How do decision trees classify data?
 Decision trees recursively split the feature space based on conditions that maximize impurity 
 reduction (e.g., Gini, entropy), forming a tree where each leaf corresponds to a class 
 prediction.
+
 Q7. What are key strengths and weaknesses of decision trees?
 Strengths: interpretability, handling mixed data types, nonlinear boundaries, little 
 preprocessing. Weaknesses: tendency to overfit, high variance, unstable to small data 
 changes.
+
 Q8. What is a rule‑based classifier?
 Rule‑based classifiers use explicit IF–THEN rules derived from data or expert knowledge (e.g., 
 “IF age < 25 AND income low THEN risk = high”), often extracted from decision trees or 
 specialized algorithms.
+
 Q9. What is a support vector machine (SVM)?
 SVM finds a decision boundary (hyperplane) that maximizes the margin between classes; with 
 kernels (RBF, polynomial), it can learn nonlinear boundaries in a transformed feature space.
+
 Q10. When is SVM a good choice?
 SVMs work well on medium‑sized, high‑dimensional datasets (e.g., text, bioinformatics) where 
 a clear margin exists; they can struggle with very large datasets and need careful kernel and 
 parameter tuning.
 Evaluation Metrics and Confusion Matrix
+
 Q11. What is a confusion matrix?
 For binary classification, it is a 2×2 table of counts: true positives (TP), true negatives (TN), 
 false positives (FP), and false negatives (FN), summarizing prediction outcomes.
+
 Q12. Define accuracy and when it is misleading.
 Accuracy = (TP+TN)/(TP+TN+FP+FN)(TP+TN)/(TP+TN+FP+FN). It is misleading on imbalanced 
 data (e.g., rare fraud) because a model that predicts the majority class only can have high 
 accuracy but zero usefulness on the minority class.
+
 Q13. Define precision and recall.
 Precision = TP/(TP+FP)TP/(TP+FP) measures correctness among predicted positives.
 Recall (sensitivity) = TP/(TP+FN)TP/(TP+FN) measures how many actual positives are captured.
+
 Q14. What is the F1 score and why use it?
 F1 is the harmonic mean of precision and recall: 
 F1=2⋅precision⋅recallprecision+recallF1=2⋅precision+recallprecision⋅recall. It balances both 
 metrics and is useful on imbalanced datasets.
+
 Q15. What is ROC‑AUC?
 The ROC curve plots true positive rate vs false positive rate for varying thresholds; AUC is the 
 area under this curve, representing the probability that the classifier ranks a random positive 
 higher than a random negative.
+
 Q16. What is logarithmic loss (log‑loss) in classification?
 Log‑loss measures the quality of predicted probabilities: it penalizes confident wrong 
 predictions heavily; lower log‑loss indicates better calibrated, more accurate probability 
 estimates.
+
 Q17. When would you optimize for precision vs recall?
 Optimize precision when false positives are very costly (e.g., flagging legitimate transactions 
 as fraud). Optimize recall when missing positives is worse (e.g., disease screening), even at the 
 cost of more false alarms.
+
 Q18. How do you choose the classification threshold for a probability output model?
 Use validation data to analyze precision‑recall or ROC curves and pick a threshold that 
 balances business trade‑offs (e.g., maximize F1, or meet a minimum recall while keeping FP 
 below a limit).
+
 Q19. Explain macro vs micro‑averaged precision/recall in multi‑class.
 Macro averages metrics per class then averages across classes (treats classes equally). Micro 
 aggregates TP, FP, FN across all classes first (weights by class frequency).
 Scenario‑Based Questions
+
 Q20. You have highly imbalanced data (1% positive). Which metrics and methods do you use?
 Use precision, recall, F1, PR‑AUC; apply techniques like class weighting, resampling (SMOTE, 
 undersampling), threshold tuning, or anomaly‑detection approaches instead of relying on 
 accuracy.
+
 Q21. How do you pick k in k‑NN?
 Use cross‑validation: small k may overfit (noisy boundary), large k may oversmooth. Try a 
 range of odd values, choose the one with best validation performance.
+
 Q22. What preprocessing does k‑NN or SVM require?
 Scale features (standardization/normalization), remove or engineer features to reduce noise, 
 sometimes reduce dimensionality (PCA) to combat the curse of dimensionality.
+
 Q23. Why can Naïve Bayes perform well even when independence is violated?
 Even if independence is not exact, the model’s decision boundary can still approximate the 
 Bayes optimal classifier; errors in joint probability often cancel out in class comparisons.
+
 Q24. How would you prevent a decision tree from overfitting?
 Set maximum depth, minimum samples per split/leaf, use pruning based on validation error, 
 or switch to ensemble methods like random forests/gradient boosting.
+
 Q25. Compare decision trees and SVMs in terms of interpretability and performance.
 Decision trees are easy to interpret but can be less accurate and unstable; SVMs often yield 
 higher accuracy and robust margins but are less interpretable and more complex to tune.
+
 Unit IV
 K‑Means Clustering and Intuition
 Q1. What is K‑means clustering?
 K‑means partitions data into KK clusters by assigning each point to the nearest cluster 
 centroid and then recomputing centroids as the mean of assigned points; it iterates until 
 assignments stabilize.
+
 Q2. What is the main objective function in K‑means?
 To minimize the sum of squared distances between each point and its assigned cluster 
 centroid (within‑cluster sum of squares).
+
 Q3. What assumptions does K‑means implicitly make about clusters?
 Clusters are roughly spherical, of similar size/density, and separable in Euclidean space; it 
 works best when these assumptions approximately hold.
+
 Q4. Why should features be scaled before K‑means?
 Because Euclidean distance is sensitive to scale; without scaling, features with larger numeric 
 ranges dominate the distance calculation and distort clusters.
 Random Initialization Trap and Improvements
+
 Q5. What is the random initialization trap in K‑means?
 Choosing poor random initial centroids can lead the algorithm to a bad local minimum, giving 
 different and sub‑optimal clustering each run.
