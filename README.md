@@ -8,7 +8,7 @@ estimate the probability or value of future outcomes (e.g., next month’s sales
 churn). It typically combines statistics, machine learning, and domain knowledge.
 Q2. How is predictive analytics different from descriptive and prescriptive analytics?
 Descriptive analytics summarizes what has happened (reports, dashboards). Predictive 
-analytics estimates what is likely to happen next. Prescriptive analytics suggests what actions 
+analytics estimates what is likely to happen next. Prescriptive analytics suggests what actions  
 to take by optimizing decisions using predictions and business constraints.
 Q3. Give three real‑world examples of predictive analytics.
 Examples: credit‑risk scoring in banking; demand forecasting in retail; predicting equipment 
