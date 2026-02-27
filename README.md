@@ -487,64 +487,80 @@ Random Initialization Trap and Improvements
 Q5. What is the random initialization trap in K‑means?
 Choosing poor random initial centroids can lead the algorithm to a bad local minimum, giving 
 different and sub‑optimal clustering each run.
+
 Q6. How can you mitigate the random initialization problem?
 Use K‑means++ initialization (spreads centroids apart), run K‑means multiple times with 
 different seeds and choose the best objective value, or use more robust clustering methods.
+
 Q7. What is K‑means++?
 K‑means++ initializes the first centroid randomly, then chooses subsequent centroids with 
 probability proportional to the squared distance from existing centroids, improving 
 convergence and solution quality.
 Choosing the Number of Clusters
+
 Q8. Why is selecting the right number of clusters KK important?
 Too few clusters merge distinct groups; too many over‑segment and capture noise. Both hurt 
 interpretability and may reduce downstream performance.
+
 Q9. What is the elbow method?
 Plot the within‑cluster sum of squares versus KK; the “elbow” point where marginal 
 improvement sharply decreases is a good candidate for KK.
+
 Q10. What is the silhouette score and how is it interpreted?
 For each point, the silhouette compares cohesion (distance to its own cluster) vs separation 
 (distance to nearest other cluster); values near +1 indicate well‑clustered points, 0 overlaps, 
 negative possible mis‑assignment. Average silhouette across points can guide KK.
+
 Q11. Name other practical considerations for choosing KK.
 Domain knowledge (expected number of segments), business constraints (manageable 
 number of groups), cluster stability across random seeds, and visualization.
 Hierarchical Clustering
+
 Q12. What is hierarchical clustering?
 Hierarchical clustering produces a tree (dendrogram) of nested clusters by either repeatedly 
 merging smaller clusters (agglomerative) or splitting a big cluster (divisive).
+
 Q13. Distinguish between agglomerative and divisive clustering.
 Agglomerative starts with each point as its own cluster and merges them step by step; 
 divisive starts with one cluster containing all points and recursively splits it.
+
 Q14. What is a dendrogram and how is it used?
 A dendrogram is a tree diagram showing how clusters are merged or split; cutting it at a 
 chosen height yields a specific number of clusters based on distance thresholds.
 Linkage Types
+
 Q15. What is linkage in hierarchical clustering?
 Linkage defines how distance between clusters is computed when deciding which clusters to 
 merge.
+
 Q16. Explain single, complete, average, and centroid linkage.
 Single: distance between the closest pair of points (one from each cluster).
 Complete: distance between the farthest pair of points.
 Average: average distance over all point pairs.
 Centroid: distance between cluster centroids.
+
 Q17. When might single linkage be problematic?
 It can suffer from the “chaining” effect, causing elongated clusters that connect distant 
 points through sequences of close points.
+
 Q18. Why is complete linkage often preferred in practice?
 It tends to form more compact, spherical clusters and is less susceptible to chaining, though 
 it can be sensitive to outliers.
 Association Rules and Pattern Mining
+
 Q19. What is an association rule?
 An association rule has the form A⇒
 BA⇒
 B, meaning that when items in set AA appear, items 
 in set BB tend to appear in the same transaction.
+
 Q20. Define support, confidence, and lift.
 Support: proportion of transactions containing both AA and BB.
 Confidence: P(B∣
 A)P(B∣
 A) = support(A and B) / support(A).
 Lift: confidence(A→B) / support(B); lift > 1 indicates positive association.
+
 Q21. What is market basket analysis?
 It applies association rules to retail transaction data to discover which products are 
 frequently bought together, informing store layout, promotions, and cross‑selling.
@@ -623,54 +639,67 @@ Q9. Why are nonlinear activation functions necessary?
 Without nonlinear activations, stacking multiple linear layers collapses into a single linear 
 transformation, so the network cannot model complex nonlinear relationships; nonlinearities 
 (ReLU, tanh, etc.) allow composition of features.
+
 Q10. What is backpropagation?
 Backpropagation efficiently computes gradients of the loss with respect to all weights by 
 applying the chain rule from output to input. These gradients are then used by optimization 
 algorithms (like gradient descent, Adam) to update weights.
+
 Q11. What is overfitting in neural networks and how can you reduce it?
 Overfitting occurs when the network memorizes training data instead of learning general 
 patterns. Techniques to reduce it include more data, regularization (L2, dropout), early 
 stopping, data augmentation, and simpler architectures.
 Convolutional Neural Networks (CNN)
+
 Q12. What problem do CNNs solve better than MLPs?
 CNNs are designed for grid‑like data such as images; they exploit local spatial structure and 
 parameter sharing to learn translation‑invariant features (edges, textures) more efficiently 
 than dense MLPs.
+
 Q13. What is a convolution layer and why is weight sharing important?
 A convolution layer applies learnable filters (kernels) that slide over the input and compute 
 dot products with local patches; the same filter weights are reused across all spatial 
 locations, drastically reducing parameters and capturing repeated patterns.
+
 Q14. What roles do pooling layers play in CNNs?
 Pooling (e.g., max or average pooling) reduces spatial dimensions, aggregates local features, 
 and introduces invariance to small translations or distortions, which helps generalization and 
 reduces computation.
+
 Q15. Provide a typical CNN architecture flow for image classification.
 Input image → stack of [Conv + activation + (optional) pooling] blocks → flatten feature maps → 
 one or more dense layers → output layer with softmax for class probabilities.
 Recurrent Neural Networks (RNN)
+
 Q16. When are recurrent neural networks used?
 RNNs handle sequential data (time series, text, speech) by maintaining a hidden state that 
 summarizes previous inputs, enabling modeling of temporal dependencies.
+
 Q17. Describe the basic RNN update equation.
 At time step tt: hidden ht=f(Wxxt+Whht−1+b)ht=f(Wxxt+Whht−1+b); output ytyt depends on 
 htht. Here ff is a nonlinear activation like tanh or ReLU.
+
 Q18. What problems do vanilla RNNs suffer from, and how do LSTM/GRU address them?
 Vanilla RNNs struggle with vanishing and exploding gradients, making learning long‑range 
 dependencies difficult. LSTMs and GRUs use gating mechanisms (input, forget, output/update 
 gates) to control information flow and preserve gradients over longer sequences.
+
 Q19. Name three applications of RNN‑style models.
 Language modeling and text generation, machine translation, sentiment analysis, speech 
 recognition, and sequence‑to‑sequence prediction in time series.
 Comparisons and Practical Questions
+
 Q20. How would you decide between using PCA vs an autoencoder for dimensionality 
 reduction?
 PCA is linear, simple, and interpretable; it works well as a first step. Autoencoders (neural 
 networks trained to reconstruct input through a bottleneck) can learn nonlinear 
 representations and may capture complex manifolds but are more complex to train and tune.
+
 Q21. Compare MLP, CNN, and RNN in terms of data type and structure.
 MLP: general‑purpose, works on fixed‑length feature vectors.
 CNN: best for spatially structured data (images, 2D/3D grids).
 RNN: best for ordered sequences where order and context over time matter.
+
 Q22. What hyperparameters are most important when training deep networks?
 Learning rate (and schedule), batch size, number of layers and units, choice of activation, 
 regularization strength, dropout rate, optimizer (SGD, Adam), and number of training epochs.
