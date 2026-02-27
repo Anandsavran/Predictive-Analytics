@@ -703,20 +703,24 @@ RNN: best for ordered sequences where order and context over time matter.
 Q22. What hyperparameters are most important when training deep networks?
 Learning rate (and schedule), batch size, number of layers and units, choice of activation, 
 regularization strength, dropout rate, optimizer (SGD, Adam), and number of training epochs.
+
 Q23. How does batch normalization help training?
 Batch norm normalizes layer inputs within a mini‑batch to have controlled mean and 
 variance, reducing internal covariate shift, allowing higher learning rates, and often improving 
 convergence and generalization.
+
 Q24. What is the vanishing gradient problem in deep networks?
 During backpropagation, gradients can shrink exponentially as they are multiplied through 
 many layers, causing earlier layers to learn extremely slowly; ReLU activations, residual 
 connections, and careful initialization help mitigate this.
+
 Q25. In an interview, how would you briefly explain a neural network to a non‑technical 
 stakeholder?
 You might say: “A neural network is a flexible mathematical model that learns to map inputs 
 to outputs by adjusting many simple interconnected units, similar to how the brain 
 strengthens connections, so that over time it can recognize patterns like images or speech 
 and make predictions.”
+
 Unit VI
 Bias–Variance Trade‑off
 Q1. What is the bias–variance trade‑off?
@@ -724,120 +728,147 @@ Bias is error from overly simple assumptions (underfitting); variance is error f
 to small changes in training data (overfitting). Increasing model complexity usually decreases 
 bias but increases variance, so a good model balances both to minimize total generalization 
 error.
+
 Q2. How can you detect high bias vs high variance from learning curves?
 High bias: both training and validation errors are high and close to each other even with more 
 data. High variance: training error is low but validation error is much higher; adding more data 
 often helps.
+
 Q3. Give examples of high‑bias and high‑variance models.
 High‑bias: linear regression on a strongly nonlinear problem, shallow decision tree. 
 High‑variance: deep unpruned decision tree, k‑NN with k=1k=1, very deep neural network with 
 little data.
+
 Q4. What techniques help reduce variance without increasing bias too much?
 Use more training data, regularization (L1/L2, dropout), model simplification, early stopping, 
 and ensemble methods like bagging/random forests which average many high‑variance 
 models.
+
 Cross‑Validation: LOO and K‑fold
 Q5. Why is cross‑validation needed?
 A single train/test split may give a noisy estimate of performance. Cross‑validation repeatedly 
 splits the data, trains on each training fold, and evaluates on the corresponding validation 
 fold to get a more reliable estimate and tune hyperparameters.
+
 Q6. What is leave‑one‑out (LOO) cross‑validation?
 For nn samples, LOO trains the model nn times, each time using n−1n−1 samples for training 
 and 1 sample as validation. The average of the nn validation losses estimates generalization 
 error.
+
 Q7. Advantages and disadvantages of LOO?
 Advantages: nearly unbiased estimate of performance and uses almost all data for training 
 each time. Disadvantages: very expensive for complex models and high‑variance estimates 
 for unstable learners (small change in data can change model a lot).
+
 Q8. What is K‑fold cross‑validation?
 Data is split into KK roughly equal folds. For each of KK runs, one fold is used as validation 
 and the remaining K−1K−1 as training. The mean validation metric over all folds is used for 
 model comparison or tuning.
+
 Q9. How do you choose K in K‑fold CV?
 Typical choices are K=5K=5 or 10 as a balance between computational cost and variance of 
 the estimate. Smaller K (e.g., 3) is faster but noisier; larger K approaches LOO with higher cost.
+
 Q10. What is stratified K‑fold and when is it important?
 Stratified K‑fold preserves the class distribution in each fold (e.g., same proportion of 
 positives/negatives as the full dataset), which is crucial for classification with class imbalance.
 Bagging (Bootstrap Aggregating)
+
 Q11. What is bagging and what problem does it address?
 Bagging trains multiple models on different bootstrap samples (sampling with replacement) 
 of the training data and averages their predictions (or takes majority vote). It primarily 
 reduces variance, stabilizing high‑variance models like decision trees.
+
 Q12. Why does averaging predictions reduce variance?
 Each model trained on a bootstrap sample makes different errors; averaging independent (or 
 weakly correlated) errors tends to cancel them out, leading to more stable predictions.
+
 Q13. How is a bootstrap sample constructed?
 From a dataset of size nn, sample nn observations with replacement. Some original samples 
 appear multiple times and some not at all; on average, about 63% of unique observations 
 appear in each bootstrap sample.
+
 Q14. What are out‑of‑bag (OOB) samples and how are they used?
 OOB samples for a model are training examples not included in that model’s bootstrap 
 sample. Because each tree in a bagging ensemble sees only part of the data, the remaining 
 OOB data can act as a validation set to estimate generalization error without a separate 
 hold‑out set.
 Boosting
+
 Q15. What is boosting in general terms?
 Boosting trains a sequence of weak learners (often shallow trees), where each new learner 
 focuses more on examples that previous learners predicted poorly. Their weighted 
 predictions are combined to form a strong ensemble.
+
 Q16. How is boosting different from bagging?
 Bagging trains models independently and in parallel on bootstrap samples, averaging their 
 outputs mainly to reduce variance. Boosting trains models sequentially, with each model 
 depending on the previous ones, reducing both bias and variance but with higher risk of 
 overfitting and more sensitivity to noise.
+
 Q17. Briefly explain the idea of AdaBoost.
 AdaBoost starts with equal weights on all training samples. After each weak learner is trained, 
 it increases weights of misclassified samples and decreases weights of correctly classified 
 ones. The next learner is trained on this reweighted data, and final predictions are a weighted 
 majority vote of all learners.
+
 Q18. What about gradient boosting (e.g., XGBoost, LightGBM)?
 Gradient boosting views boosting as gradient descent in function space: each new tree is 
 trained to approximate the negative gradient (residual errors) of the loss with respect to the 
 current model’s predictions. It supports flexible loss functions and regularization, making it 
 extremely powerful on tabular data.
+
 Q19. How do you control overfitting in boosting algorithms?
 Use shallow trees (low depth), learning rate (shrinkage) to scale each tree’s contribution, limit 
 number of trees, subsample rows/columns, and use early stopping based on validation 
 performance.
 Random Forests
+
 Q20. What is a random forest?
 A random forest is an ensemble of decision trees built using bagging plus random feature 
 selection at each split. For prediction, it averages (regression) or votes (classification) across 
 trees.
+
 Q21. Why does random feature selection at splits help?
 By restricting each split to a random subset of features, trees become more decorrelated; 
 this reduces the chance that many trees make the same error, further lowering ensemble 
 variance.
+
 Q22. What are key hyperparameters in random forests?
 Number of trees, depth of each tree (or min samples per leaf), number of features considered 
 at each split (e.g., dd for classification, d/3d/3 for regression), and minimum samples to split 
 nodes.
+
 Q23. How do random forests handle missing values and feature scaling?
 Decision trees (and thus random forests) are relatively robust to unscaled features and can 
 handle missing values via surrogate splits or by sending missing data down both branches 
 with weights (implementation‑dependent). However, it is still good practice to handle missing 
 values explicitly.
+
 Q24. What are strengths and weaknesses of random forests?
 Strengths: strong performance out of the box, robust to noise and outliers, can capture 
 nonlinearities and interactions, provide variable importance measures. Weaknesses: less 
 interpretable than single trees, can be slow on very large datasets, and model size can be 
 large.
 Putting It Together – Scenario Questions
+
 Q25. You have a high‑variance decision tree with poor test performance. What steps would 
 you take?
 First, try pruning or limiting depth and using cross‑validation for tuning. Then, consider 
 bagging or random forests to average multiple trees. Finally, examine feature importance and 
 noise, and possibly gather more data.
+
 Q26. How would you compare a random forest vs gradient boosting model fairly?
 Use the same train/validation/test splits or K‑fold cross‑validation, tune hyperparameters for 
 each model via CV, and compare metrics (e.g., ROC‑AUC, RMSE) on the held‑out test set; also 
 consider training time, inference speed, and interpretability.
+
 Q27. In an imbalanced classification problem, how do you combine cross‑validation with 
 performance metrics?
 Use stratified K‑fold CV to preserve class ratios and evaluate metrics sensitive to imbalance 
 (precision, recall, F1, ROC‑AUC or PR‑AUC) rather than accuracy. Average metrics across folds 
 for stability.
+
 Q28. Explain how bias–variance considerations influence your choice between a linear model, 
 random forest, and gradient boosting.
 A linear model has high bias/low variance, good for simple relationships and small data. A 
